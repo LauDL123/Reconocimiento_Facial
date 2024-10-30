@@ -1,0 +1,9 @@
+#video{
+    position: absolute;
+    z-index: 1;
+}
+#canvas{
+    position: relative;
+    z-index: 2;
+    border: 2px solid red;
+}
