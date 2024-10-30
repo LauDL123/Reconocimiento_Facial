@@ -43,6 +43,7 @@ async function onplay() {
         );
         infocaja.draw(canvas);
     });
+    document.querySelector("video").setAttribute("style","")
     console.log("se actualizó")
 }
 setInterval(() => { onplay() }, 1000)

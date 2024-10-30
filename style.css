@@ -5,5 +5,39 @@
 #canvas{
     position: relative;
     z-index: 2;
-    border: 2px solid red;
+}
+h1{
+    color:red;
+    font-size: 90px;
+}
+.contenedordecamara{
+    background: conic-gradient(
+        from 0deg,
+        #ff0000,
+        #ff9900,
+        #ffff00,
+        #00ff00,
+        #00ffff,
+        #0000ff,
+        #ff00ff,
+        #ff0000
+    );
+    animation: spin 5s linear infinite;
+padding: 15px;
+border-radius: 10px;
+
+}
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
