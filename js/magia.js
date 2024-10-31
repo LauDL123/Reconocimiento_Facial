@@ -1,11 +1,11 @@
+const url_modulo = './face-api.js-master/weights';
+
+const canvas = document.querySelector('#canvas');
+const video = document.querySelector('#video');
+const loader = document.querySelector('.terminal-loader');
+const container = document.querySelector('.contenedor');
 
 document.addEventListener("DOMContentLoaded", async () => {
-    const url_modulo = './face-api.js-master/weights';
-
-    const canvas = document.querySelector('#canvas');
-    const video = document.querySelector('#video');
-    const loader = document.querySelector('.terminal-loader');
-    const container = document.querySelector('.container');
 
     const stream = await navigator.mediaDevices.getUserMedia({ video: {} });
     video.srcObject = stream;
@@ -21,38 +21,37 @@ document.addEventListener("DOMContentLoaded", async () => {
         await faceapi.loadFaceExpressionModel(url_modulo);
         await faceapi.loadAgeGenderModel(url_modulo);
 
-        // Espera un breve momento para asegurarte de que el video se haya iniciado antes de la detección
-        setTimeout(async () => {
-            let descripcionesCaras = await faceapi.detectAllFaces(video)
-                .withFaceLandmarks()
-                .withFaceDescriptors()
-                .withFaceExpressions()
-                .withAgeAndGender();
+        // Espera un breve momento para asegurarte de que el video se haya iniciado antes de la detección 
+        let descripcionesCaras = await faceapi.detectAllFaces(video)
+            .withFaceLandmarks()
+            .withFaceDescriptors()
+            .withFaceExpressions()
+            .withAgeAndGender();
 
-            console.log(descripcionesCaras);
+        console.log(descripcionesCaras);
 
-            const dimensiones = faceapi.matchDimensions(canvas, video, true);
-            const escalarResultados = faceapi.resizeResults(descripcionesCaras, dimensiones);
+        const dimensiones = faceapi.matchDimensions(canvas, video, true);
+        const escalarResultados = faceapi.resizeResults(descripcionesCaras, dimensiones);
 
-            faceapi.draw.drawDetections(canvas, escalarResultados);
-            faceapi.draw.drawFaceLandmarks(canvas, escalarResultados);
-            faceapi.draw.drawFaceExpressions(canvas, escalarResultados, 0.05);
+        faceapi.draw.drawDetections(canvas, escalarResultados);
+        faceapi.draw.drawFaceLandmarks(canvas, escalarResultados);
+        faceapi.draw.drawFaceExpressions(canvas, escalarResultados, 0.05);
 
-            escalarResultados.forEach(deteccion => {
-                const caja = deteccion.detection.box;
-                const infocaja = new faceapi.draw.DrawBox(
-                    caja,
-                    {
-                        label: Math.round(deteccion.age) + " años" + (deteccion.gender == 'male' ? ' Masculino' : ' Femenino')
-                    }
-                );
-                infocaja.draw(canvas);
-            });
-            loader.style.display = 'none'; 
-            container.style.display = 'block';
+        escalarResultados.forEach(deteccion => {
+            const caja = deteccion.detection.box;
+            const infocaja = new faceapi.draw.DrawBox(
+                caja,
+                {
+                    label: Math.round(deteccion.age) + " años" + (deteccion.gender == 'male' ? ' Masculino' : ' Femenino')
+                }
+            );
+            infocaja.draw(canvas);
+        });
+        loader.style.display = 'none';
+        container.style.display = 'block';
 
-        }, 1000);
     }
+
 
     setInterval(() => { onplay() }, 1000);
 });
