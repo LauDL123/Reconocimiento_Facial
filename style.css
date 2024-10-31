@@ -1,70 +1,466 @@
 body {
-    background-color: black;
-    color: white;
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
-    height: 100vh;
+    align-items: center;
+    min-height: 100vh;
     margin: 0;
+    background-color: #121212;
+    color: #fff;
+    font-family: Arial, sans-serif;
+}
+
+@font-face {
+    font-family: 'fuente';
+    src: url('fuente.ttf') format('truetype');
 }
 
 h1 {
-    display: center;
+    font-size: 5em;
     margin-bottom: 20px;
-    font-size: 2.5em;
-    align-items: center;
-    justify-content: center;
+    font-family: 'fuente';
 }
 
-.video-container {
+.contenedor {
+    text-align: center;
+    padding: 20px;
+}
+
+.contenedodevideo {
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
+    min-height: 80vh;
+    width: 100%;
 }
 
-#video {
+video {
+    height: 100%;
+    border-radius: 25px;
+    width: 100%;
+    object-fit: cover;
+}
+
+canvas {
     position: absolute;
-    z-index: 1;
-    width: 640px; /* Ajusten el ancho según sea necesario */
-    height: 480px; /* la altura  */
-    border-radius: 10px; /* Bordes redondeados */
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    pointer-events: none;
 }
 
-#canvas {
-    position: relative;
-    z-index: 2;
-    width: 640px; /* Debe coincidir con el tamaño de video */
-    height: 480px; /* Debe coincidir con el tamaño de video */
-    border-radius: 10px; /* Bordes redondeados */
-    animation: rgb-effect 2s infinite alternate; /* Efecto RGB */
+.bordedegradiente {
+    position: absolute;
+    padding: 20px;
+    border-radius: 25px;
+    background: conic-gradient(red, orange, yellow, green, cyan, blue, violet);
+    animation: colorChange 15s linear infinite;
+    z-index: -1;
 }
-p{
-display:center;
-    align-items: center;
-    justify-content: center;
-}
+
+
 .footer {
     margin-top: 20px;
-    font-size: 1.2em;
+    font-size: 0.9em;
 }
 
-/* Efecto RGB en el borde */
-@keyframes rgb-effect {
+@keyframes colorChange {
     0% {
-        border: 2px solid red;
+        background: conic-gradient(red, orange, yellow, green, cyan, blue, violet);
+    }
+    1% {
+        background: conic-gradient(orange, yellow, green, cyan, blue, violet, red);
+    }
+    2% {
+        background: conic-gradient(yellow, green, cyan, blue, violet, red, orange);
+    }
+    3% {
+        background: conic-gradient(green, cyan, blue, violet, red, orange, yellow);
+    }
+    4% {
+        background: conic-gradient(cyan, blue, violet, red, orange, yellow, green);
+    }
+    5% {
+        background: conic-gradient(blue, violet, red, orange, yellow, green, cyan);
+    }
+    6% {
+        background: conic-gradient(violet, red, orange, yellow, green, cyan, blue);
+    }
+    7% {
+        background: conic-gradient(red, orange, yellow, green, cyan, blue, violet);
+    }
+    8% {
+        background: conic-gradient(orange, yellow, green, cyan, blue, violet, red);
+    }
+    9% {
+        background: conic-gradient(yellow, green, cyan, blue, violet, red, orange);
+    }
+    10% {
+        background: conic-gradient(green, cyan, blue, violet, red, orange, yellow);
+    }
+    11% {
+        background: conic-gradient(cyan, blue, violet, red, orange, yellow, green);
+    }
+    12% {
+        background: conic-gradient(blue, violet, red, orange, yellow, green, cyan);
+    }
+    13% {
+        background: conic-gradient(violet, red, orange, yellow, green, cyan, blue);
+    }
+    14% {
+        background: conic-gradient(red, orange, yellow, green, cyan, blue, violet);
+    }
+    15% {
+        background: conic-gradient(orange, yellow, green, cyan, blue, violet, red);
+    }
+    16% {
+        background: conic-gradient(yellow, green, cyan, blue, violet, red, orange);
+    }
+    17% {
+        background: conic-gradient(green, cyan, blue, violet, red, orange, yellow);
+    }
+    18% {
+        background: conic-gradient(cyan, blue, violet, red, orange, yellow, green);
+    }
+    19% {
+        background: conic-gradient(blue, violet, red, orange, yellow, green, cyan);
+    }
+    20% {
+        background: conic-gradient(violet, red, orange, yellow, green, cyan, blue);
+    }
+    21% {
+        background: conic-gradient(red, orange, yellow, green, cyan, blue, violet);
+    }
+    22% {
+        background: conic-gradient(orange, yellow, green, cyan, blue, violet, red);
+    }
+    23% {
+        background: conic-gradient(yellow, green, cyan, blue, violet, red, orange);
+    }
+    24% {
+        background: conic-gradient(green, cyan, blue, violet, red, orange, yellow);
     }
     25% {
-        border: 2px solid green;
+        background: conic-gradient(cyan, blue, violet, red, orange, yellow, green);
+    }
+    26% {
+        background: conic-gradient(blue, violet, red, orange, yellow, green, cyan);
+    }
+    27% {
+        background: conic-gradient(violet, red, orange, yellow, green, cyan, blue);
+    }
+    28% {
+        background: conic-gradient(red, orange, yellow, green, cyan, blue, violet);
+    }
+    29% {
+        background: conic-gradient(orange, yellow, green, cyan, blue, violet, red);
+    }
+    30% {
+        background: conic-gradient(yellow, green, cyan, blue, violet, red, orange);
+    }
+    31% {
+        background: conic-gradient(green, cyan, blue, violet, red, orange, yellow);
+    }
+    32% {
+        background: conic-gradient(cyan, blue, violet, red, orange, yellow, green);
+    }
+    33% {
+        background: conic-gradient(blue, violet, red, orange, yellow, green, cyan);
+    }
+    34% {
+        background: conic-gradient(violet, red, orange, yellow, green, cyan, blue);
+    }
+    35% {
+        background: conic-gradient(red, orange, yellow, green, cyan, blue, violet);
+    }
+    36% {
+        background: conic-gradient(orange, yellow, green, cyan, blue, violet, red);
+    }
+    37% {
+        background: conic-gradient(yellow, green, cyan, blue, violet, red, orange);
+    }
+    38% {
+        background: conic-gradient(green, cyan, blue, violet, red, orange, yellow);
+    }
+    39% {
+        background: conic-gradient(cyan, blue, violet, red, orange, yellow, green);
+    }
+    40% {
+        background: conic-gradient(blue, violet, red, orange, yellow, green, cyan);
+    }
+    41% {
+        background: conic-gradient(violet, red, orange, yellow, green, cyan, blue);
+    }
+    42% {
+        background: conic-gradient(red, orange, yellow, green, cyan, blue, violet);
+    }
+    43% {
+        background: conic-gradient(orange, yellow, green, cyan, blue, violet, red);
+    }
+    44% {
+        background: conic-gradient(yellow, green, cyan, blue, violet, red, orange);
+    }
+    45% {
+        background: conic-gradient(green, cyan, blue, violet, red, orange, yellow);
+    }
+    46% {
+        background: conic-gradient(cyan, blue, violet, red, orange, yellow, green);
+    }
+    47% {
+        background: conic-gradient(blue, violet, red, orange, yellow, green, cyan);
+    }
+    48% {
+        background: conic-gradient(violet, red, orange, yellow, green, cyan, blue);
+    }
+    49% {
+        background: conic-gradient(red, orange, yellow, green, cyan, blue, violet);
     }
     50% {
-        border: 2px solid blue;
+        background: conic-gradient(orange, yellow, green, cyan, blue, violet, red);
+    }
+    51% {
+        background: conic-gradient(yellow, green, cyan, blue, violet, red, orange);
+    }
+    52% {
+        background: conic-gradient(green, cyan, blue, violet, red, orange, yellow);
+    }
+    53% {
+        background: conic-gradient(cyan, blue, violet, red, orange, yellow, green);
+    }
+    54% {
+        background: conic-gradient(blue, violet, red, orange, yellow, green, cyan);
+    }
+    55% {
+        background: conic-gradient(violet, red, orange, yellow, green, cyan, blue);
+    }
+    56% {
+        background: conic-gradient(red, orange, yellow, green, cyan, blue, violet);
+    }
+    57% {
+        background: conic-gradient(orange, yellow, green, cyan, blue, violet, red);
+    }
+    58% {
+        background: conic-gradient(yellow, green, cyan, blue, violet, red, orange);
+    }
+    59% {
+        background: conic-gradient(green, cyan, blue, violet, red, orange, yellow);
+    }
+    60% {
+        background: conic-gradient(cyan, blue, violet, red, orange, yellow, green);
+    }
+    61% {
+        background: conic-gradient(blue, violet, red, orange, yellow, green, cyan);
+    }
+    62% {
+        background: conic-gradient(violet, red, orange, yellow, green, cyan, blue);
+    }
+    63% {
+        background: conic-gradient(red, orange, yellow, green, cyan, blue, violet);
+    }
+    64% {
+        background: conic-gradient(orange, yellow, green, cyan, blue, violet, red);
+    }
+    65% {
+        background: conic-gradient(yellow, green, cyan, blue, violet, red, orange);
+    }
+    66% {
+        background: conic-gradient(green, cyan, blue, violet, red, orange, yellow);
+    }
+    67% {
+        background: conic-gradient(cyan, blue, violet, red, orange, yellow, green);
+    }
+    68% {
+        background: conic-gradient(blue, violet, red, orange, yellow, green, cyan);
+    }
+    69% {
+        background: conic-gradient(violet, red, orange, yellow, green, cyan, blue);
+    }
+    70% {
+        background: conic-gradient(red, orange, yellow, green, cyan, blue, violet);
+    }
+    71% {
+        background: conic-gradient(orange, yellow, green, cyan, blue, violet, red);
+    }
+    72% {
+        background: conic-gradient(yellow, green, cyan, blue, violet, red, orange);
+    }
+    73% {
+        background: conic-gradient(green, cyan, blue, violet, red, orange, yellow);
+    }
+    74% {
+        background: conic-gradient(cyan, blue, violet, red, orange, yellow, green);
     }
     75% {
-        border: 2px solid yellow;
+        background: conic-gradient(blue, violet, red, orange, yellow, green, cyan);
+    }
+    76% {
+        background: conic-gradient(violet, red, orange, yellow, green, cyan, blue);
+    }
+    77% {
+        background: conic-gradient(red, orange, yellow, green, cyan, blue, violet);
+    }
+    78% {
+        background: conic-gradient(orange, yellow, green, cyan, blue, violet, red);
+    }
+    79% {
+        background: conic-gradient(yellow, green, cyan, blue, violet, red, orange);
+    }
+    80% {
+        background: conic-gradient(green, cyan, blue, violet, red, orange, yellow);
+    }
+    81% {
+        background: conic-gradient(cyan, blue, violet, red, orange, yellow, green);
+    }
+    82% {
+        background: conic-gradient(blue, violet, red, orange, yellow, green, cyan);
+    }
+    83% {
+        background: conic-gradient(violet, red, orange, yellow, green, cyan, blue);
+    }
+    84% {
+        background: conic-gradient(red, orange, yellow, green, cyan, blue, violet);
+    }
+    85% {
+        background: conic-gradient(orange, yellow, green, cyan, blue, violet, red);
+    }
+    86% {
+        background: conic-gradient(yellow, green, cyan, blue, violet, red, orange);
+    }
+    87% {
+        background: conic-gradient(green, cyan, blue, violet, red, orange, yellow);
+    }
+    88% {
+        background: conic-gradient(cyan, blue, violet, red, orange, yellow, green);
+    }
+    89% {
+        background: conic-gradient(blue, violet, red, orange, yellow, green, cyan);
+    }
+    90% {
+        background: conic-gradient(violet, red, orange, yellow, green, cyan, blue);
+    }
+    91% {
+        background: conic-gradient(red, orange, yellow, green, cyan, blue, violet);
+    }
+    92% {
+        background: conic-gradient(orange, yellow, green, cyan, blue, violet, red);
+    }
+    93% {
+        background: conic-gradient(yellow, green, cyan, blue, violet, red, orange);
+    }
+    94% {
+        background: conic-gradient(green, cyan, blue, violet, red, orange, yellow);
+    }
+    95% {
+        background: conic-gradient(cyan, blue, violet, red, orange, yellow, green);
+    }
+    96% {
+        background: conic-gradient(blue, violet, red, orange, yellow, green, cyan);
+    }
+    97% {
+        background: conic-gradient(violet, red, orange, yellow, green, cyan, blue);
+    }
+    98% {
+        background: conic-gradient(red, orange, yellow, green, cyan, blue, violet);
+    }
+    99% {
+        background: conic-gradient(orange, yellow, green, cyan, blue, violet, red);
     }
     100% {
-        border: 2px solid purple;
+        background: conic-gradient(yellow, green, cyan, blue, violet, red, orange);
     }
 }
+
+/**/
+/* From Uiverse.io by jeremyssocial */ 
+@keyframes blinkCursor {
+    50% {
+      border-right-color: transparent;
+    }
+  }
+  
+  @keyframes typeAndDelete {
+    0%,
+    10% {
+      width: 0;
+    }
+    45%,
+    55% {
+      width: 6.2em;
+    } /* adjust width based on content */
+    90%,
+    100% {
+      width: 0;
+    }
+  }
+  
+  .terminal-loader {
+    border: 0.1em solid #333;
+    background-color: #1a1a1a;
+    color: #0f0;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 1em;
+    padding: 1.5em 1em;
+    width: 12em;
+    margin: 100px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+  
+  .terminal-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1.5em;
+    background-color: #333;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    padding: 0 0.4em;
+    box-sizing: border-box;
+  }
+  
+  .terminal-controls {
+    float: right;
+  }
+  
+  .control {
+    display: inline-block;
+    width: 0.6em;
+    height: 0.6em;
+    margin-left: 0.4em;
+    border-radius: 50%;
+    background-color: #777;
+  }
+  
+  .control.close {
+    background-color: #e33;
+  }
+  
+  .control.minimize {
+    background-color: #ee0;
+  }
+  
+  .control.maximize {
+    background-color: #0b0;
+  }
+  
+  .terminal-title {
+    float: left;
+    line-height: 1.5em;
+    color: #eee;
+  }
+  
+  .text {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 0.2em solid green; /* Cursor */
+    animation: typeAndDelete 4s steps(11) infinite,
+      blinkCursor 0.5s step-end infinite alternate;
+    margin-top: 1.5em;
+  }
+  
