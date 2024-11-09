@@ -34,9 +34,55 @@ h1 {
     width: 100%;
 }
 
+@property --angulo{
+
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+
+}
+
+.contenedodevideo::after, .contenedodevideo::before {
+
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-image: conic-gradient(from var(--angulo), blue, red, rgb(0, 255, 0), yellow, rgb(255, 0, 255), blue);
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    z-index: -5;
+    padding: 15px; /* Cambien este valor para agrandar o achicar el borde de color */
+    border-radius: 15px;
+    animation: 3s girar linear infinite;
+
+}
+
+.contenedodevideo::before {
+
+    filter: blur(1.5rem); /* Modifiquen esto para que brille más o menos */
+    opacity: 0.8; /* Modifiquen esto para hacer más o menos intenso el brillo */
+
+}
+
+@keyframes girar{
+
+    from{
+
+      --angulo: 0deg;
+
+    } to {
+
+      --angulo: 360deg;
+
+    }
+
+}
+
 video {
     height: 100%;
-    border-radius: 25px;
+    border-radius: 15px;
     width: 100%;
     object-fit: cover;
 }
@@ -51,63 +97,10 @@ canvas {
     pointer-events: none;
 }
 
-.bordedegradiente {
-    position: absolute;
-    padding: 20px;
-    border-radius: 25px;
-    background: conic-gradient(red, orange, yellow, rgb(0, 255, 0), cyan, blue, rgb(255, 0, 255), red);
-    animation: colorChange 5s linear infinite;
-    z-index: -1;
-}
-
-.bordedegradiente::before {
-
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border-radius: 25px;
-    background: conic-gradient(red, orange, yellow, rgb(0, 255, 0), cyan, blue, rgb(255, 0, 255), red);
-    animation: colorChange 5s linear infinite;
-    z-index: -2; 
-    filter: blur(25px);
-
-}
-
 .footer {
     margin-top: 20px;
     font-size: 0.9em;
 }
-
-@keyframes colorChange {
-     0% {
-        background: conic-gradient(red, orange, yellow, rgb(0, 255, 0), cyan, blue, rgb(255, 0, 255), red);
-    }
-    14% {
-        background: conic-gradient(orange, yellow, rgb(0, 255, 0), cyan, blue, rgb(255, 0, 255), red, orange);
-    }
-    29% {
-        background: conic-gradient(yellow, rgb(0, 255, 0), cyan, blue, rgb(255, 0, 255), red, orange, yellow);
-    }
-    43% {
-        background: conic-gradient(rgb(0, 255, 0), cyan, blue, rgb(255, 0, 255), red, orange, yellow, rgb(0, 255, 0));
-    }
-    57% {
-        background: conic-gradient(cyan, blue, rgb(255, 0, 255), red, orange, yellow, rgb(0, 255, 0), cyan);
-    }
-    71% {
-        background: conic-gradient(blue, rgb(255, 0, 255), red, orange, yellow, rgb(0, 255, 0), cyan, blue);
-    }
-    85% {
-        background: conic-gradient(rgb(255, 0, 255), red, orange, yellow, rgb(0, 255, 0), cyan, blue, rgb(255, 0, 255));
-    }
-    0% {
-        background: conic-gradient(red, orange, yellow, rgb(0, 255, 0), cyan, blue, rgb(255, 0, 255), red);
-    }
-}
-
 
 /**/
 /* From Uiverse.io by jeremyssocial */ 
